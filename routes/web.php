@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 
-Route::view('/', 'home'); 
+Route::prefix('pages')->group(function () {
 
-Route::view('/home', 'home');
-Route::view('/about', 'about');
-Route::view('/contact', 'contact');
-Route::view('/product', 'product');
-Route::view('/dashboard', 'dashboard');
-Route::view('/login', 'login');
-Route::view('/register', 'register');
+    Route::view('/home', 'pages.home');
+    Route::view('/about', 'pages.about');
+    Route::view('/contact', 'pages.contact');
+
+    Route::get('/product', [ProdukController::class, 'index']);
+
+});
